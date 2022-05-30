@@ -145,6 +145,8 @@ class FeatureEngineer:
             indicator_df = pd.DataFrame()
             for i in range(len(unique_ticker)):
                 try:
+                    # StockDataFrame precomputes the technical indicators
+                    # So all that needs to be done is merge the desired columns
                     temp_indicator = stock[stock.tic == unique_ticker[i]][indicator]
                     temp_indicator = pd.DataFrame(temp_indicator)
                     temp_indicator["tic"] = unique_ticker[i]
@@ -164,6 +166,18 @@ class FeatureEngineer:
         # df = data.set_index(['date','tic']).sort_index()
         # df = df.join(df.groupby(level=0, group_keys=False).apply(lambda x, y: Sdf.retype(x)[y], y=self.tech_indicator_list))
         # return df.reset_index()
+
+    def add_Kalman_filter():
+        return
+
+    def calculate_Kalman_filter():
+        return
+
+    def add_EM_algorithm():
+        return
+
+    def calculate_EM_algorithm():
+        return
 
     def add_user_defined_feature(self, data):
         """

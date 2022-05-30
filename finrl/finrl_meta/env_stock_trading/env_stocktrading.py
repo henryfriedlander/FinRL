@@ -101,14 +101,14 @@ class StockTradingEnv(gym.Env):
                     sell_amount = (
                         self.state[index + 1]
                         * sell_num_shares
-                        * (1 - self.sell_cost_pct[index])
+                        * (1 - self.sell_cost_pct)
                     )
                     # update balance
                     self.state[0] += sell_amount
 
                     self.state[index + self.stock_dim + 1] -= sell_num_shares
                     self.cost += (
-                        self.state[index + 1] * sell_num_shares * self.sell_cost_pct[index]
+                        self.state[index + 1] * sell_num_shares * self.sell_cost_pct
                     )
                     self.trades += 1
                 else:
@@ -130,7 +130,7 @@ class StockTradingEnv(gym.Env):
                         sell_amount = (
                             self.state[index + 1]
                             * sell_num_shares
-                            * (1 - self.sell_cost_pct[index])
+                            * (1 - self.sell_cost_pct)
                         )
                         # update balance
                         self.state[0] += sell_amount
@@ -155,19 +155,19 @@ class StockTradingEnv(gym.Env):
             if self.state[index + 2*self.stock_dim+ 1] !=True: # check if the stock is able to buy
             # if self.state[index + 1] >0:
                 # Buy only if the price is > 0 (no missing data in this particular date)
-                available_amount = self.state[0] / (self.state[index + 1]*(1 + self.buy_cost_pct[index])) # when buying stocks, we should consider the cost of trading when calculating available_amount, or we may be have cash<0
+                available_amount = self.state[0] / (self.state[index + 1]*(1 + self.buy_cost_pct)) # when buying stocks, we should consider the cost of trading when calculating available_amount, or we may be have cash<0
                 # print('available_amount:{}'.format(available_amount))
 
                 # update balance
                 buy_num_shares = min(available_amount, action)
                 buy_amount = (
-                    self.state[index + 1] * buy_num_shares * (1 + self.buy_cost_pct[index])
+                    self.state[index + 1] * buy_num_shares * (1 + self.buy_cost_pct)
                 )
                 self.state[0] -= buy_amount
 
                 self.state[index + self.stock_dim + 1] += buy_num_shares
 
-                self.cost += self.state[index + 1] * buy_num_shares * self.buy_cost_pct[index]
+                self.cost += self.state[index + 1] * buy_num_shares * self.buy_cost_pct
                 self.trades += 1
             else:
                 buy_num_shares = 0

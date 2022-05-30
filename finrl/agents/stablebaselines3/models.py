@@ -289,6 +289,7 @@ class DRLEnsembleAgent:
                     self.stock_dim,
                     self.hmax,
                     self.initial_amount,
+                    [0] * self.stock_dim,
                     self.buy_cost_pct,
                     self.sell_cost_pct,
                     self.reward_scaling,
@@ -429,6 +430,7 @@ class DRLEnsembleAgent:
                         self.stock_dim,
                         self.hmax,
                         self.initial_amount,
+                        [0] * self.stock_dim,
                         self.buy_cost_pct,
                         self.sell_cost_pct,
                         self.reward_scaling,
@@ -439,6 +441,7 @@ class DRLEnsembleAgent:
                     )
                 ]
             )
+
 
             validation = data_split(
                 self.df,
@@ -485,6 +488,7 @@ class DRLEnsembleAgent:
                         self.stock_dim,
                         self.hmax,
                         self.initial_amount,
+                        [0] * self.stock_dim,
                         self.buy_cost_pct,
                         self.sell_cost_pct,
                         self.reward_scaling,
@@ -533,6 +537,7 @@ class DRLEnsembleAgent:
                         self.stock_dim,
                         self.hmax,
                         self.initial_amount,
+                        [0] * self.stock_dim,
                         self.buy_cost_pct,
                         self.sell_cost_pct,
                         self.reward_scaling,
@@ -584,6 +589,7 @@ class DRLEnsembleAgent:
                         self.stock_dim,
                         self.hmax,
                         self.initial_amount,
+                        [0] * self.stock_dim,
                         self.buy_cost_pct,
                         self.sell_cost_pct,
                         self.reward_scaling,
